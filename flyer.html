@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Printable Flyer — Senior Fest 2027 (May 8 at Steele Wheels)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #13263b;
+      --crimson: #b52329;
+      --gold: #b8821e;
+      --ivory: #faf6f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 1.5rem;
+      background: #e2e8f0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--navy);
+    }
+
+    .screen-toolbar {
+      max-width: 8.5in;
+      margin: 0 auto 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--navy);
+      color: #ffffff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+    }
+
+    .print-btn {
+      background: var(--crimson);
+      color: #ffffff;
+      border: none;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .sheet {
+      width: 8.5in;
+      min-height: 10.6in;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 6px solid var(--navy);
+      padding: 0.45in 0.52in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+    }
+
+    .top-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid var(--gold);
+      padding-bottom: 0.16in;
+    }
+
+    .free-pill {
+      background: var(--crimson);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 13pt;
+      padding: 0.08in 0.2in;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .top-loc {
+      font-weight: 800;
+      font-size: 12pt;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .headline-block {
+      text-align: center;
+      padding: 0.22in 0 0.18in;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 42pt;
+      line-height: 1.02;
+      margin: 0 0 0.1in;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+    }
+
+    .subhead {
+      font-size: 15pt;
+      font-weight: 800;
+      color: var(--crimson);
+      margin: 0;
+    }
+
+    .date-box {
+      background: var(--navy);
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 0.18in 0.24in;
+      text-align: center;
+      border: 2.5px solid var(--gold);
+      margin: 0.12in 0 0.2in;
+    }
+
+    .date-main {
+      font-size: 20pt;
+      font-weight: 800;
+      color: #f6e7c8;
+      display: block;
+    }
+
+    .venue-main {
+      font-size: 13.5pt;
+      font-weight: 600;
+      margin-top: 0.05in;
+      display: block;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.16in;
+      margin-bottom: 0.2in;
+    }
+
+    .hl-box {
+      background: var(--ivory);
+      border: 1.5px solid #d4c5b0;
+      border-radius: 10px;
+      padding: 0.15in 0.18in;
+    }
+
+    .hl-box h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 14.5pt;
+      margin: 0 0 0.05in;
+      color: var(--navy);
+    }
+
+    .hl-box p {
+      margin: 0;
+      font-size: 11pt;
+      line-height: 1.42;
+      color: #24374b;
+    }
+
+    .prom-callout {
+      border: 2.5px dashed var(--crimson);
+      background: #fff8f8;
+      border-radius: 12px;
+      padding: 0.16in 0.22in;
+      margin-bottom: 0.18in;
+    }
+
+    .prom-callout h3 {
+      margin: 0 0 0.05in;
+      font-size: 14pt;
+      color: var(--crimson);
+    }
+
+    .prom-callout p {
+      margin: 0;
+      font-size: 11.2pt;
+      line-height: 1.45;
+    }
+
+    .access-strip {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.15in;
+      background: #f1f5f9;
+      padding: 0.12in 0.18in;
+      border-radius: 8px;
+      font-size: 10.5pt;
+      font-weight: 700;
+      margin-bottom: 0.15in;
+    }
+
+    .footer-cta {
+      border-top: 2px solid var(--navy);
+      padding-top: 0.12in;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5pt;
+    }
+
+    @page {
+      size: letter portrait;
+      margin: 0.2in;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .screen-toolbar {
+        display: none !important;
+      }
+      .sheet {
+        width: 100%;
+        min-height: auto;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen-toolbar">
+    <span><strong>Print-Ready 8.5" × 11" Poster</strong> — Tip: Click the text below if you want to customize phone/website before printing!</span>
+    <button type="button" class="print-btn" onclick="window.print()">Print Poster (Ctrl+P)</button>
+  </div>
+
+  <div class="sheet" contenteditable="true" spellcheck="false" aria-label="Editable printable poster">
+    <div>
+      <div class="top-banner">
+        <span class="free-pill">100% Free Admission</span>
+        <span class="top-loc">Halifax Community Celebration</span>
+      </div>
+
+      <div class="headline-block">
+        <h1>SENIOR FEST 2027</h1>
+        <p class="subhead">Classic Cars · 4 Free Prize Bingos · Live Music &amp; Shows · Wellness Expo</p>
+      </div>
+
+      <div class="date-box">
+        <span class="date-main">SATURDAY, MAY 8, 2027 &nbsp;|&nbsp; 11:00 AM – 7:00 PM</span>
+        <span class="venue-main">Steele Wheels Motor Museum · 66 Otter Lake Court, Halifax (Bayers Lake)</span>
+      </div>
+
+      <div class="highlights-grid">
+        <div class="hl-box">
+          <h2>🎉 4 Free Prize Bingo Hours!</h2>
+          <p>Play completely free at <strong>12 PM, 2 PM, 4 PM &amp; 6 PM Finale</strong>! Easy-read jumbo slider cards, giant LED stage caller &amp; gift card/basket prizes.</p>
+        </div>
+        <div class="hl-box">
+          <h2>🚗 75+ Classic &amp; Vintage Cars</h2>
+          <p>Stroll among gleaming 1950s, ’60s &amp; ’70s cruisers, motorcycles &amp; memorabilia—plus classic convertible photo portraits!</p>
+        </div>
+        <div class="hl-box">
+          <h2>🤝 Health &amp; Community Expo</h2>
+          <p>Connect with 30+ friendly local wellness groups, active-living clubs, and community resources on the elevator-accessible mezzanine.</p>
+        </div>
+        <div class="hl-box">
+          <h2>☕ Retro Airstream Café</h2>
+          <p>Enjoy fresh coffee, tea, lunch/supper bites, plenty of comfortable seating, and a free door prize ballot for every guest!</p>
+        </div>
+      </div>
+
+      <div class="prom-callout">
+        <h3>🎶 Nonstop Hourly Stage Lineup — Drop In Anytime or Stay All Day!</h3>
+        <p>
+          <strong>11–12 PM:</strong> Swing Dancing &nbsp;•&nbsp; <strong>12–1 PM:</strong> Free Bingo #1 &nbsp;•&nbsp; <strong>1–2 PM:</strong> Live Band &amp; Prom Dance<br />
+          <strong>2–3 PM:</strong> Free Bingo #2 &nbsp;•&nbsp; <strong>3–4 PM:</strong> Stage Show &nbsp;•&nbsp; <strong>4–5 PM:</strong> Free Bingo #3<br />
+          <strong>5–6 PM:</strong> Live Singing Showcase &nbsp;•&nbsp; <strong>6–7 PM:</strong> Grand Finale Free Prize Bingo!
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <div class="access-strip">
+        <span>♿ 100% Wheelchair Accessible + Elevator</span>
+        <span>🅿️ Free On-Site Parking</span>
+        <span>🚌 Front-Door Drop-Off &amp; Group Buses Welcome</span>
+      </div>
+
+      <div class="footer-cta">
+        <div>
+          <strong>Walk-ins Welcome All Day!</strong> Optional Free RSVP &amp; Song Requests:<br />
+          <span>Website: <strong>wajdimasad.github.io/Seniorfestns</strong> &nbsp;|&nbsp; Halifax, NS</span>
+        </div>
+        <div style="text-align: right; font-weight: 800; color: var(--crimson);">
+          SAVE THE DATE!<br />MAY 8, 2027
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

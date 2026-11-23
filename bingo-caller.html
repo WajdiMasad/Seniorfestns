@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stage LED Bingo Caller — Senior Fest 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0e1e30;
+      --navy-card: #162c46;
+      --gold: #f5c451;
+      --crimson: #d92d34;
+      --ivory: #faf6f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1b3656 0%, var(--navy) 70%);
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem 1.75rem;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid rgba(245, 196, 81, 0.35);
+    }
+
+    .title-group h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      margin: 0;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      color: var(--gold);
+    }
+
+    .title-group span {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    select,
+    button {
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      border-radius: 10px;
+      padding: 0.65rem 1.15rem;
+      cursor: pointer;
+    }
+
+    select {
+      background: var(--navy-card);
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-draw {
+      background: var(--crimson);
+      color: #ffffff;
+      border: 2px solid #ff7a7f;
+      font-size: 1.1rem;
+      padding: 0.7rem 1.5rem;
+    }
+
+    .btn-draw:hover {
+      background: #b82026;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #e2e8f0;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .shot-clock-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(22, 101, 52, 0.35);
+      border: 2px solid #4ade80;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 0.45rem 0.9rem;
+      font-weight: 800;
+    }
+
+    .shot-clock-box[data-state="warn"] {
+      background: rgba(180, 83, 9, 0.45);
+      border-color: var(--gold);
+    }
+
+    .shot-clock-box[data-state="urgent"] {
+      background: rgba(185, 28, 28, 0.65);
+      border-color: #fca5a5;
+    }
+
+    .shot-clock-time {
+      font-family: monospace;
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+    }
+
+    .shot-clock-note {
+      font-size: 0.78rem;
+      color: #e2e8f0;
+      display: block;
+      line-height: 1.15;
+    }
+
+    .stage-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 1.75rem;
+      margin-top: 1.35rem;
+      align-items: stretch;
+    }
+
+    .current-call-panel {
+      background: var(--navy-card);
+      border: 3px solid var(--gold);
+      border-radius: 22px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .pattern-banner {
+      background: rgba(245, 196, 81, 0.16);
+      color: var(--gold);
+      padding: 0.5rem 0.75rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .big-ball {
+      width: 220px;
+      height: 220px;
+      margin: 1.25rem auto;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #ffffff, #f3ead8 72%, #d8c7a8 100%);
+      color: var(--navy);
+      border: 8px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    .ball-letter {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--crimson);
+      line-height: 1;
+    }
+
+    .ball-number {
+      font-size: 5.2rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .recent-strip {
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      padding-top: 1rem;
+    }
+
+    .recent-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #cbd5e1;
+      margin-bottom: 0.5rem;
+    }
+
+    .recent-pills {
+      display: flex;
+      justify-content: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      min-height: 38px;
+    }
+
+    .recent-pill {
+      background: rgba(255, 255, 255, 0.14);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    /* 75-Number Master Board */
+    .master-board {
+      background: var(--navy-card);
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      border-radius: 22px;
+      padding: 1.35rem 1.5rem;
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+      gap: 0.75rem;
+    }
+
+    .bingo-row {
+      display: grid;
+      grid-template-columns: 64px repeat(15, 1fr);
+      gap: 0.45rem;
+      align-items: center;
+    }
+
+    .row-letter {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.85rem;
+      font-weight: 800;
+      height: 100%;
+      min-height: 52px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+    }
+
+    .num-cell {
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.32);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      height: 100%;
+      min-height: 52px;
+      display: grid;
+      place-items: center;
+      font-size: clamp(1.05rem, 1.6vw, 1.55rem);
+      font-weight: 800;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .num-cell.called {
+      background: #ffffff;
+      color: var(--navy);
+      border-color: var(--gold);
+    }
+
+    .num-cell.latest {
+      background: var(--crimson);
+      color: #ffffff;
+      border-color: var(--gold);
+      transform: scale(1.08);
+      box-shadow: 0 0 18px rgba(245, 196, 81, 0.65);
+    }
+
+    @media (max-width: 1024px) {
+      .stage-grid {
+        grid-template-columns: 1fr;
+      }
+      .bingo-row {
+        grid-template-columns: 44px repeat(15, 1fr);
+        gap: 0.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title-group">
+      <h1>Senior Fest 2027 · Free Prize Bingo</h1>
+      <span id="call-counter">0 of 75 numbers called · Press Spacebar or "Call Next Number"</span>
+    </div>
+
+    <div class="controls">
+      <div class="shot-clock-box" id="shot-clock-box" data-state="ok" title="Strict 60-Minute Round Clock (54m Play + 6m Stage Reset)">
+        <div>
+          <span class="shot-clock-time" id="shot-clock-time">60:00</span>
+          <span class="shot-clock-note" id="shot-clock-note">60m Round Clock</span>
+        </div>
+        <button type="button" class="btn-outline" id="timer-toggle-btn" style="padding: 0.4rem 0.7rem; font-size: 0.85rem;">Start</button>
+        <button type="button" class="btn-outline" id="timer-reset-btn" style="padding: 0.4rem 0.6rem; font-size: 0.85rem;" title="Reset 60-Minute Round Clock">↺</button>
+      </div>
+
+      <label for="pattern-select" style="position:absolute;left:-9999px;">Target Pattern</label>
+      <select id="pattern-select" aria-label="Winning pattern for this game">
+        <option value="Game 1: Single Line">Game 1: Single Line</option>
+        <option value="Game 2: Four Corners / X">Game 2: Four Corners / X</option>
+        <option value="Game 3: Picture Frame (Keep Cards!)">Game 3: Picture Frame (Keep Cards!)</option>
+        <option value="Game 4: Progressive Full Card!">Game 4: Progressive Full Card!</option>
+        <option value="Double Line">Bonus: Double Line</option>
+        <option value="Letter 'S' for Senior Fest">Bonus: Letter "S"</option>
+      </select>
+      <button type="button" class="btn-draw" id="draw-btn">Call Next Number (Space)</button>
+      <button type="button" class="btn-outline" id="fullscreen-btn">Full Screen</button>
+      <button type="button" class="btn-outline" id="reset-btn">Clear Board</button>
+    </div>
+  </header>
+
+  <main class="stage-grid">
+    <section class="current-call-panel" aria-live="polite">
+      <div class="pattern-banner" id="pattern-banner">Game Pattern: Single Line</div>
+
+      <div class="big-ball" id="big-ball">
+        <span class="ball-letter" id="ball-letter">READY</span>
+        <span class="ball-number" id="ball-number">★</span>
+      </div>
+
+      <div class="recent-strip">
+        <div class="recent-label">Previous 5 Calls</div>
+        <div class="recent-pills" id="recent-pills"></div>
+      </div>
+    </section>
+
+    <section class="master-board" id="master-board" aria-label="Master 1 to 75 Bingo Board"></section>
+  </main>
+
+  <script>
+    const LETTERS = [
+      { letter: "B", start: 1, end: 15 },
+      { letter: "I", start: 16, end: 30 },
+      { letter: "N", start: 31, end: 45 },
+      { letter: "G", start: 46, end: 60 },
+      { letter: "O", start: 61, end: 75 }
+    ];
+
+    let pool = [];
+    let history = [];
+
+    const boardEl = document.getElementById("master-board");
+    const ballLetterEl = document.getElementById("ball-letter");
+    const ballNumberEl = document.getElementById("ball-number");
+    const recentPillsEl = document.getElementById("recent-pills");
+    const counterEl = document.getElementById("call-counter");
+    const patternSelect = document.getElementById("pattern-select");
+    const patternBanner = document.getElementById("pattern-banner");
+
+    function buildBoard() {
+      boardEl.innerHTML = "";
+      LETTERS.forEach(({ letter, start, end }) => {
+        const row = document.createElement("div");
+        row.className = "bingo-row";
+        const head = document.createElement("div");
+        head.className = "row-letter";
+        head.textContent = letter;
+        row.appendChild(head);
+
+        for (let n = start; n <= end; n++) {
+          const cell = document.createElement("div");
+          cell.className = "num-cell";
+          cell.id = `cell-${n}`;
+          cell.textContent = n;
+          cell.title = "Click to toggle manually if using a physical Bingo cage";
+          cell.style.cursor = "pointer";
+          cell.addEventListener("click", () => toggleManualNumber(n));
+          row.appendChild(cell);
+        }
+        boardEl.appendChild(row);
+      });
+    }
+
+    function getLetter(n) {
+      if (n <= 15) return "B";
+      if (n <= 30) return "I";
+      if (n <= 45) return "N";
+      if (n <= 60) return "G";
+      return "O";
+    }
+
+    function resetGame() {
+      pool = Array.from({ length: 75 }, (_, i) => i + 1);
+      history = [];
+      ballLetterEl.textContent = "READY";
+      ballNumberEl.textContent = "★";
+      recentPillsEl.innerHTML = "";
+      counterEl.textContent = "0 of 75 numbers called · Press Spacebar or \"Call Next Number\"";
+      document.querySelectorAll(".num-cell").forEach((c) => {
+        c.classList.remove("called", "latest");
+      });
+    }
+
+    function drawNext() {
+      if (!pool.length) return;
+      const idx = Math.floor(Math.random() * pool.length);
+      const num = pool.splice(idx, 1)[0];
+      const letter = getLetter(num);
+      const label = `${letter}-${num}`;
+
+      document.querySelectorAll(".num-cell.latest").forEach((c) => c.classList.remove("latest"));
+      const cell = document.getElementById(`cell-${num}`);
+      if (cell) cell.classList.add("called", "latest");
+
+      ballLetterEl.textContent = letter;
+      ballNumberEl.textContent = num;
+
+      const prevFive = history.slice(-5).reverse();
+      recentPillsEl.innerHTML = prevFive.map((item) => `<span class="recent-pill">${item}</span>`).join("");
+
+      history.push(label);
+      counterEl.textContent = `${history.length} of 75 numbers called`;
+    }
+
+    function toggleManualNumber(num) {
+      const letter = getLetter(num);
+      const label = `${letter}-${num}`;
+      const cell = document.getElementById(`cell-${num}`);
+      if (!cell) return;
+
+      if (cell.classList.contains("called")) {
+        cell.classList.remove("called", "latest");
+        history = history.filter((item) => item !== label);
+        if (!pool.includes(num)) pool.push(num);
+      } else {
+        pool = pool.filter((n) => n !== num);
+        document.querySelectorAll(".num-cell.latest").forEach((c) => c.classList.remove("latest"));
+        cell.classList.add("called", "latest");
+        ballLetterEl.textContent = letter;
+        ballNumberEl.textContent = num;
+        const prevFive = history.slice(-5).reverse();
+        recentPillsEl.innerHTML = prevFive.map((item) => `<span class="recent-pill">${item}</span>`).join("");
+        history.push(label);
+      }
+      counterEl.textContent = `${history.length} of 75 numbers called`;
+    }
+
+    patternSelect.addEventListener("change", () => {
+      patternBanner.textContent = patternSelect.options[patternSelect.selectedIndex].text;
+    });
+
+    document.getElementById("draw-btn").addEventListener("click", drawNext);
+
+    document.getElementById("reset-btn").addEventListener("click", () => {
+      if (!history.length || confirm("Start a fresh Bingo game and clear the board?")) {
+        resetGame();
+      }
+    });
+
+    document.getElementById("fullscreen-btn").addEventListener("click", () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space" && document.activeElement.tagName !== "SELECT") {
+        e.preventDefault();
+        drawNext();
+      }
+    });
+
+    /* Strict 60-Minute Round Shot Clock (54m play + 6m stage changeover) */
+    let roundSecondsLeft = 60 * 60;
+    let roundInterval = null;
+    const clockBox = document.getElementById("shot-clock-box");
+    const clockTimeEl = document.getElementById("shot-clock-time");
+    const clockNoteEl = document.getElementById("shot-clock-note");
+    const timerToggleBtn = document.getElementById("timer-toggle-btn");
+    const timerResetBtn = document.getElementById("timer-reset-btn");
+
+    function renderShotClock() {
+      const mins = Math.floor(roundSecondsLeft / 60);
+      const secs = roundSecondsLeft % 60;
+      clockTimeEl.textContent = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+
+      if (roundSecondsLeft <= 6 * 60) {
+        clockBox.dataset.state = "urgent";
+        clockNoteEl.textContent = roundSecondsLeft === 0 ? "Time Up · Stage Reset!" : "Wrap Up · Stage Reset!";
+      } else if (roundSecondsLeft <= 18 * 60) {
+        clockBox.dataset.state = "warn";
+        clockNoteEl.textContent = "Progressive Game 4!";
+      } else {
+        clockBox.dataset.state = "ok";
+        clockNoteEl.textContent = "On Pace (Games 1–3)";
+      }
+    }
+
+    timerToggleBtn.addEventListener("click", () => {
+      if (roundInterval) {
+        clearInterval(roundInterval);
+        roundInterval = null;
+        timerToggleBtn.textContent = "Resume";
+      } else {
+        timerToggleBtn.textContent = "Pause";
+        renderShotClock();
+        roundInterval = setInterval(() => {
+          if (roundSecondsLeft > 0) {
+            roundSecondsLeft--;
+            renderShotClock();
+          } else {
+            clearInterval(roundInterval);
+            roundInterval = null;
+            timerToggleBtn.textContent = "Done";
+          }
+        }, 1000);
+      }
+    });
+
+    timerResetBtn.addEventListener("click", () => {
+      if (roundInterval) {
+        clearInterval(roundInterval);
+        roundInterval = null;
+      }
+      roundSecondsLeft = 60 * 60;
+      timerToggleBtn.textContent = "Start";
+      clockBox.dataset.state = "ok";
+      clockTimeEl.textContent = "60:00";
+      clockNoteEl.textContent = "60m Round Clock";
+    });
+
+    buildBoard();
+    resetGame();
+    patternBanner.textContent = patternSelect.options[patternSelect.selectedIndex].text;
+  </script>
+</body>
+</html>
