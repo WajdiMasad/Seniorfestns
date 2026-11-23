@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Printable Flyer — Senior Fest 2027 (May 8 at Steele Wheels)</title>
+  <title>Printable Poster — Senior Fest 2027 (May 8 at Steele Wheels)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --navy: #13263b;
-      --crimson: #b52329;
-      --gold: #b8821e;
-      --ivory: #faf6f0;
+      --ink: #111214;
+      --muted: #52565e;
+      --accent: #c8281e;
+      --bg: #f6f5f1;
     }
 
     * {
@@ -22,32 +22,33 @@
     body {
       margin: 0;
       padding: 1.5rem;
-      background: #e2e8f0;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: var(--navy);
+      background: #e5e5e0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
     }
 
-    .screen-toolbar {
+    .toolbar {
       max-width: 8.5in;
       margin: 0 auto 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--navy);
+      background: var(--ink);
       color: #ffffff;
       padding: 0.75rem 1.25rem;
-      border-radius: 10px;
+      border-radius: 12px;
+      font-size: 0.88rem;
     }
 
     .print-btn {
-      background: var(--crimson);
+      background: var(--accent);
       color: #ffffff;
       border: none;
-      padding: 0.6rem 1.25rem;
-      border-radius: 8px;
-      font-family: inherit;
-      font-weight: 800;
-      font-size: 0.95rem;
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 600;
       cursor: pointer;
     }
 
@@ -56,152 +57,153 @@
       min-height: 10.6in;
       margin: 0 auto;
       background: #ffffff;
-      border: 6px solid var(--navy);
-      padding: 0.45in 0.52in;
+      padding: 0.5in 0.55in;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
     }
 
-    .top-banner {
+    .meta-top {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      border-bottom: 3px solid var(--gold);
-      padding-bottom: 0.16in;
-    }
-
-    .free-pill {
-      background: var(--crimson);
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 13pt;
-      padding: 0.08in 0.2in;
-      border-radius: 999px;
+      align-items: baseline;
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 0.14in;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5pt;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
 
-    .top-loc {
-      font-weight: 800;
-      font-size: 12pt;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+    .free-tag {
+      color: var(--accent);
+      font-weight: 600;
     }
 
-    .headline-block {
-      text-align: center;
-      padding: 0.22in 0 0.18in;
+    .hero-block {
+      padding: 0.24in 0 0.2in;
+      border-bottom: 1px solid rgba(17, 18, 20, 0.15);
     }
 
     h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 42pt;
-      line-height: 1.02;
-      margin: 0 0 0.1in;
-      color: var(--navy);
-      letter-spacing: -0.01em;
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: 56pt;
+      line-height: 0.94;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.12in;
     }
 
-    .subhead {
-      font-size: 15pt;
-      font-weight: 800;
-      color: var(--crimson);
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .lead {
+      font-size: 13pt;
+      line-height: 1.45;
+      color: var(--muted);
       margin: 0;
+      max-width: 62ch;
     }
 
-    .date-box {
-      background: var(--navy);
-      color: #ffffff;
-      border-radius: 12px;
-      padding: 0.18in 0.24in;
-      text-align: center;
-      border: 2.5px solid var(--gold);
-      margin: 0.12in 0 0.2in;
-    }
-
-    .date-main {
-      font-size: 20pt;
-      font-weight: 800;
-      color: #f6e7c8;
-      display: block;
-    }
-
-    .venue-main {
-      font-size: 13.5pt;
-      font-weight: 600;
-      margin-top: 0.05in;
-      display: block;
-    }
-
-    .highlights-grid {
+    .date-strip {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.16in;
-      margin-bottom: 0.2in;
+      gap: 0.25in;
+      padding: 0.18in 0;
+      border-bottom: 1.5px solid var(--ink);
     }
 
-    .hl-box {
-      background: var(--ivory);
-      border: 1.5px solid #d4c5b0;
-      border-radius: 10px;
-      padding: 0.15in 0.18in;
+    .date-strip small {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.03in;
     }
 
-    .hl-box h2 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 14.5pt;
-      margin: 0 0 0.05in;
-      color: var(--navy);
-    }
-
-    .hl-box p {
-      margin: 0;
-      font-size: 11pt;
-      line-height: 1.42;
-      color: #24374b;
-    }
-
-    .prom-callout {
-      border: 2.5px dashed var(--crimson);
-      background: #fff8f8;
-      border-radius: 12px;
-      padding: 0.16in 0.22in;
-      margin-bottom: 0.18in;
-    }
-
-    .prom-callout h3 {
-      margin: 0 0 0.05in;
+    .date-strip strong {
       font-size: 14pt;
-      color: var(--crimson);
+      font-weight: 600;
+      letter-spacing: -0.015em;
     }
 
-    .prom-callout p {
-      margin: 0;
-      font-size: 11.2pt;
-      line-height: 1.45;
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 0.32in;
+      padding: 0.22in 0;
     }
 
-    .access-strip {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.15in;
-      background: #f1f5f9;
-      padding: 0.12in 0.18in;
-      border-radius: 8px;
+    .col-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      margin: 0 0 0.1in;
+    }
+
+    .lineup-table {
+      width: 100%;
+      border-collapse: collapse;
       font-size: 10.5pt;
-      font-weight: 700;
-      margin-bottom: 0.15in;
     }
 
-    .footer-cta {
-      border-top: 2px solid var(--navy);
-      padding-top: 0.12in;
+    .lineup-table td {
+      padding: 0.065in 0;
+      border-bottom: 1px solid rgba(17, 18, 20, 0.12);
+    }
+
+    .lineup-table td:first-child {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5pt;
+      width: 1.35in;
+      color: var(--muted);
+    }
+
+    .lineup-table tr.bingo-row td:last-child {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .feature-stack {
+      display: grid;
+      gap: 0.14in;
+    }
+
+    .feat-item h3 {
+      font-size: 11.5pt;
+      font-weight: 600;
+      margin: 0 0 0.03in;
+    }
+
+    .feat-item p {
+      margin: 0;
+      font-size: 10pt;
+      line-height: 1.42;
+      color: var(--muted);
+    }
+
+    .bottom-bar {
+      background: var(--bg);
+      padding: 0.16in 0.2in;
+      border-radius: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11.5pt;
+      font-size: 10.5pt;
+    }
+
+    .url-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5pt;
+      font-weight: 500;
+      color: var(--ink);
     }
 
     @page {
@@ -214,7 +216,7 @@
         background: #ffffff;
         padding: 0;
       }
-      .screen-toolbar {
+      .toolbar {
         display: none !important;
       }
       .sheet {
@@ -226,73 +228,79 @@
   </style>
 </head>
 <body>
-  <div class="screen-toolbar">
-    <span><strong>Print-Ready 8.5" × 11" Poster</strong> — Tip: Click the text below if you want to customize phone/website before printing!</span>
+  <div class="toolbar">
+    <span><strong>8.5" × 11" Poster</strong> — Click any text on the page to customize before printing.</span>
     <button type="button" class="print-btn" onclick="window.print()">Print Poster (Ctrl+P)</button>
   </div>
 
   <div class="sheet" contenteditable="true" spellcheck="false" aria-label="Editable printable poster">
     <div>
-      <div class="top-banner">
-        <span class="free-pill">100% Free Admission</span>
-        <span class="top-loc">Halifax Community Celebration</span>
+      <div class="meta-top">
+        <span>Senior Fest 2027 · Halifax, Nova Scotia</span>
+        <span class="free-tag">Free Admission · Free Bingo · Free Parking</span>
       </div>
 
-      <div class="headline-block">
-        <h1>SENIOR FEST 2027</h1>
-        <p class="subhead">Classic Cars · 4 Free Prize Bingos · Live Music &amp; Shows · Wellness Expo</p>
-      </div>
-
-      <div class="date-box">
-        <span class="date-main">SATURDAY, MAY 8, 2027 &nbsp;|&nbsp; 11:00 AM – 7:00 PM</span>
-        <span class="venue-main">Steele Wheels Motor Museum · 66 Otter Lake Court, Halifax (Bayers Lake)</span>
-      </div>
-
-      <div class="highlights-grid">
-        <div class="hl-box">
-          <h2>🎉 4 Free Prize Bingo Hours!</h2>
-          <p>Play completely free at <strong>12 PM, 2 PM, 4 PM &amp; 6 PM Finale</strong>! Easy-read jumbo slider cards, giant LED stage caller &amp; gift card/basket prizes.</p>
-        </div>
-        <div class="hl-box">
-          <h2>🚗 75+ Classic &amp; Vintage Cars</h2>
-          <p>Stroll among gleaming 1950s, ’60s &amp; ’70s cruisers, motorcycles &amp; memorabilia—plus classic convertible photo portraits!</p>
-        </div>
-        <div class="hl-box">
-          <h2>🤝 Health &amp; Community Expo</h2>
-          <p>Connect with 30+ friendly local wellness groups, active-living clubs, and community resources on the elevator-accessible mezzanine.</p>
-        </div>
-        <div class="hl-box">
-          <h2>☕ Retro Airstream Café</h2>
-          <p>Enjoy fresh coffee, tea, lunch/supper bites, plenty of comfortable seating, and a free door prize ballot for every guest!</p>
-        </div>
-      </div>
-
-      <div class="prom-callout">
-        <h3>🎶 Nonstop Hourly Stage Lineup — Drop In Anytime or Stay All Day!</h3>
-        <p>
-          <strong>11–12 PM:</strong> Swing Dancing &nbsp;•&nbsp; <strong>12–1 PM:</strong> Free Bingo #1 &nbsp;•&nbsp; <strong>1–2 PM:</strong> Live Band &amp; Prom Dance<br />
-          <strong>2–3 PM:</strong> Free Bingo #2 &nbsp;•&nbsp; <strong>3–4 PM:</strong> Stage Show &nbsp;•&nbsp; <strong>4–5 PM:</strong> Free Bingo #3<br />
-          <strong>5–6 PM:</strong> Live Singing Showcase &nbsp;•&nbsp; <strong>6–7 PM:</strong> Grand Finale Free Prize Bingo!
+      <div class="hero-block">
+        <h1>Classic cars, live music &amp; <em>free bingo.</em></h1>
+        <p class="lead">
+          A free Saturday gathering for older adults, families, and friends surrounded by 75+ vintage cars inside Steele Wheels Motor Museum. Drop in for a couple of hours or spend the day.
         </p>
+      </div>
+
+      <div class="date-strip">
+        <div>
+          <small>Date &amp; Hours</small>
+          <strong>Saturday, May 8, 2027 · 11 AM – 7 PM</strong>
+        </div>
+        <div>
+          <small>Venue</small>
+          <strong>Steele Wheels · 66 Otter Lake Ct, Bayers Lake</strong>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <p class="col-title">Hourly Main Stage Lineup</p>
+          <table class="lineup-table">
+            <tr><td>10:30 AM</td><td>Early doors, coffee &amp; booths open</td></tr>
+            <tr><td>11:00 – 12:00</td><td>Swing Dancing</td></tr>
+            <tr class="bingo-row"><td>12:00 – 1:00</td><td>Free Prize Bingo — Round 1</td></tr>
+            <tr><td>1:00 – 2:00</td><td>Live Band &amp; Afternoon Dance</td></tr>
+            <tr class="bingo-row"><td>2:00 – 3:00</td><td>Free Prize Bingo — Round 2</td></tr>
+            <tr><td>3:00 – 4:00</td><td>Featured Show on Stage</td></tr>
+            <tr class="bingo-row"><td>4:00 – 5:00</td><td>Free Prize Bingo — Round 3</td></tr>
+            <tr><td>5:00 – 6:00</td><td>Live Singing Showcase</td></tr>
+            <tr class="bingo-row"><td>6:00 – 7:00</td><td>Free Prize Bingo — Finale Round</td></tr>
+          </table>
+        </div>
+
+        <div class="feature-stack">
+          <p class="col-title" style="margin-bottom: 0.02in;">Inside the Museum</p>
+          <div class="feat-item">
+            <h3>Four Hours of Free Prize Bingo</h3>
+            <p>Easy-read slider cards, numbers projected huge on the stage LED wall, and gift cards &amp; baskets every hour.</p>
+          </div>
+          <div class="feat-item">
+            <h3>75+ Classic Cars &amp; Airstream Café</h3>
+            <p>Browse iconic 1950s–1970s cruisers and grab coffee, tea, lunch, or supper from the vintage silver Airstream.</p>
+          </div>
+          <div class="feat-item">
+            <h3>Mezzanine Community &amp; Wellness Expo</h3>
+            <p>30+ local health, recreation, and community tables upstairs via elevator in a quiet conversation zone.</p>
+          </div>
+          <div class="feat-item">
+            <h3>100% Wheelchair Accessible</h3>
+            <p>Step-free entry, elevator access, loaner wheelchairs, and a flat front-door drop-off lane for cars &amp; buses.</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div>
-      <div class="access-strip">
-        <span>♿ 100% Wheelchair Accessible + Elevator</span>
-        <span>🅿️ Free On-Site Parking</span>
-        <span>🚌 Front-Door Drop-Off &amp; Group Buses Welcome</span>
+    <div class="bottom-bar">
+      <div>
+        <strong>Walk-ins welcome all day.</strong> Optional free RSVP &amp; song requests:
       </div>
-
-      <div class="footer-cta">
-        <div>
-          <strong>Walk-ins Welcome All Day!</strong> Optional Free RSVP &amp; Song Requests:<br />
-          <span>Website: <strong>wajdimasad.github.io/Seniorfestns</strong> &nbsp;|&nbsp; Halifax, NS</span>
-        </div>
-        <div style="text-align: right; font-weight: 800; color: var(--crimson);">
-          SAVE THE DATE!<br />MAY 8, 2027
-        </div>
-      </div>
+      <div class="url-display">wajdimasad.github.io/Seniorfestns</div>
     </div>
   </div>
 </body>

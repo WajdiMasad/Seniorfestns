@@ -1,64 +1,51 @@
 /**
- * Senior Fest 2027 — Landing Page & Optional RSVP Script
- * Optional: Paste a Formspree, Make, or Google Apps Script URL below when deploying online.
+ * Senior Fest 2027 — Website & Optional RSVP Script
+ * Optional: Paste a Formspree, Make, or Google Apps Script URL below to forward RSVPs externally.
  */
 const RSVP_WEBHOOK_URL = "";
 const STORAGE_KEY = "senior_fest_2027_rsvps";
-const PREFS_KEY = "senior_fest_2027_a11y";
+const PREFS_KEY = "senior_fest_2027_scale";
 
 document.addEventListener("DOMContentLoaded", () => {
-  initAccessibilityControls();
+  initTextSizeCycle();
   initCountdown();
   initScheduleFilters();
   initRsvpForm();
   initOrganizerModal();
 });
 
-/* 1. Text Size & High Contrast Controls */
-function initAccessibilityControls() {
+/* 1. Clean Single-Button Text Size Cycle (100% -> 115% -> 128%) */
+function initTextSizeCycle() {
   const html = document.documentElement;
-  const scaleButtons = document.querySelectorAll(".a11y-btn[data-scale]");
-  const contrastBtn = document.getElementById("contrast-toggle");
+  const btn = document.getElementById("text-size-btn");
+  const steps = [
+    { key: "standard", label: "Aa 100%" },
+    { key: "large", label: "Aa 115%" },
+    { key: "xlarge", label: "Aa 128%" }
+  ];
 
-  let savedPrefs = { scale: "standard", contrast: "standard" };
+  let idx = 0;
   try {
-    const raw = localStorage.getItem(PREFS_KEY);
-    if (raw) savedPrefs = { ...savedPrefs, ...JSON.parse(raw) };
+    const saved = localStorage.getItem(PREFS_KEY);
+    const found = steps.findIndex((s) => s.key === saved);
+    if (found >= 0) idx = found;
   } catch (_) {}
 
-  applyPrefs(savedPrefs);
+  applyStep(idx);
 
-  scaleButtons.forEach((btn) => {
+  if (btn) {
     btn.addEventListener("click", () => {
-      savedPrefs.scale = btn.dataset.scale;
-      applyPrefs(savedPrefs);
-      savePrefs(savedPrefs);
-    });
-  });
-
-  if (contrastBtn) {
-    contrastBtn.addEventListener("click", () => {
-      savedPrefs.contrast = savedPrefs.contrast === "high" ? "standard" : "high";
-      applyPrefs(savedPrefs);
-      savePrefs(savedPrefs);
+      idx = (idx + 1) % steps.length;
+      applyStep(idx);
+      try {
+        localStorage.setItem(PREFS_KEY, steps[idx].key);
+      } catch (_) {}
     });
   }
 
-  function applyPrefs(prefs) {
-    html.setAttribute("data-font-scale", prefs.scale);
-    html.setAttribute("data-contrast", prefs.contrast);
-    scaleButtons.forEach((btn) => {
-      btn.setAttribute("aria-pressed", String(btn.dataset.scale === prefs.scale));
-    });
-    if (contrastBtn) {
-      contrastBtn.setAttribute("aria-pressed", String(prefs.contrast === "high"));
-    }
-  }
-
-  function savePrefs(prefs) {
-    try {
-      localStorage.setItem(PREFS_KEY, JSON.stringify(prefs));
-    } catch (_) {}
+  function applyStep(i) {
+    html.setAttribute("data-font-scale", steps[i].key);
+    if (btn) btn.textContent = steps[i].label;
   }
 }
 
@@ -70,11 +57,9 @@ function initCountdown() {
   const eventDate = new Date("2027-05-08T11:00:00-03:00").getTime();
 
   function update() {
-    const now = Date.now();
-    const diff = eventDate - now;
-
+    const diff = eventDate - Date.now();
     if (diff <= 0) {
-      display.innerHTML = "<span><strong>Today!</strong><small>11 AM – 7 PM</small></span>";
+      display.innerHTML = "<span>Happening today · 11 AM – 7 PM</span>";
       return;
     }
 
@@ -83,9 +68,9 @@ function initCountdown() {
     const mins = Math.floor((diff / (1000 * 60)) % 60);
 
     display.innerHTML = `
-      <span><strong>${days}</strong><small>Days</small></span>
-      <span><strong>${hours}</strong><small>Hours</small></span>
-      <span><strong>${mins}</strong><small>Mins</small></span>
+      <span>${days}<small>d</small></span>
+      <span>${hours}<small>h</small></span>
+      <span>${mins}<small>m</small></span>
     `;
   }
 
@@ -93,22 +78,18 @@ function initCountdown() {
   setInterval(update, 60000);
 }
 
-/* 3. Interactive Schedule Filter */
+/* 3. Timetable Filter */
 function initScheduleFilters() {
   const filterBtns = document.querySelectorAll(".filter-btn");
-  const items = document.querySelectorAll(".schedule-item");
+  const rows = document.querySelectorAll(".tt-row");
 
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const filter = btn.dataset.filter;
       filterBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
 
-      items.forEach((item) => {
-        if (filter === "all" || item.dataset.category === filter) {
-          item.hidden = false;
-        } else {
-          item.hidden = true;
-        }
+      rows.forEach((row) => {
+        row.hidden = !(filter === "all" || row.dataset.category === filter);
       });
     });
   });
@@ -159,13 +140,13 @@ function initRsvpForm() {
     const email = (formData.get("email") || "").toString().trim();
 
     if (!name) {
-      showError("Please enter your name (or your group's name) so we can welcome you at the door.");
+      showError("Please enter your name (or your group’s name).");
       document.getElementById("guest-name").focus();
       return;
     }
 
     if (!phone && !email) {
-      showError("Please include either a phone number or an email address in case of event updates.");
+      showError("Please include either a phone number or an email address.");
       document.getElementById("guest-phone").focus();
       return;
     }
@@ -178,7 +159,7 @@ function initRsvpForm() {
       phone,
       email,
       guests: formData.get("guests") || "1",
-      window: formData.get("window") || "All Day / Flexible",
+      window: formData.get("window") || "Flexible / Full Day",
       shuttleInterest: formData.get("shuttleInterest") ? "Yes" : "No",
       loanerWheelchair: formData.get("loanerWheelchair") ? "Yes" : "No",
       groupBus: formData.get("groupBus") ? "Yes" : "No",
@@ -194,9 +175,7 @@ function initRsvpForm() {
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(record)
         });
-      } catch (_) {
-        // Keep local confirmation resilient even if offline
-      }
+      } catch (_) {}
     }
 
     confName.textContent = record.name;
@@ -205,9 +184,7 @@ function initRsvpForm() {
     confirmation.hidden = false;
   });
 
-  if (printBtn) {
-    printBtn.addEventListener("click", () => window.print());
-  }
+  if (printBtn) printBtn.addEventListener("click", () => window.print());
 
   if (resetBtn) {
     resetBtn.addEventListener("click", () => {
@@ -297,7 +274,7 @@ function initOrganizerModal() {
   function renderTable() {
     const rsvps = getStoredRsvps();
     if (!rsvps.length) {
-      tableContainer.innerHTML = "<p><em>No RSVPs saved on this device yet.</em></p>";
+      tableContainer.innerHTML = "<p><em>No RSVPs saved on this browser yet.</em></p>";
       return;
     }
 
@@ -323,8 +300,8 @@ function initOrganizerModal() {
             <th>Name</th>
             <th>Contact</th>
             <th>Guests</th>
-            <th>Window</th>
-            <th>Prom Song</th>
+            <th>Timing</th>
+            <th>Song</th>
           </tr>
         </thead>
         <tbody>${rowsHtml}</tbody>
