@@ -1,389 +1,372 @@
 <!DOCTYPE html>
-<html lang="en" data-font-scale="standard">
+<html lang="en" data-scale="normal">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SENIOR FEST 2027 | May 8 · Steele Wheels, Halifax</title>
-  <meta name="description" content="Saturday, May 8, 2027 (11 AM – 7 PM) at Steele Wheels Motor Museum, Halifax. Free admission, 4 Live Shows & Bands, 4 Free Prize Bingos, and 75+ Classic Cars." />
-  <link rel="canonical" href="https://wajdimasad.github.io/Seniorfestns/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://wajdimasad.github.io/Seniorfestns/" />
-  <meta property="og:title" content="SENIOR FEST 2027 | May 8 · Steele Wheels, Halifax" />
-  <meta property="og:description" content="8 Hours Live. 4 Bands & Shows. 4 Free Prize Bingos. 75+ Classic Cars. Free admission." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles-v3.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senior Fest at Steele Wheels, May 8 in Halifax</title>
+  <meta name="description" content="Eight hours of live swing dancing, bands, stage shows, and four free prize bingos surrounded by classic cars at Steele Wheels Motor Museum on May 8, 2027.">
+  <link rel="canonical" href="https://wajdimasad.github.io/Seniorfestns/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wajdimasad.github.io/Seniorfestns/">
+  <meta property="og:title" content="Senior Fest at Steele Wheels, May 8 in Halifax">
+  <meta property="og:description" content="Four live stage sets, four free prize bingos, and seventy-five classic cars in Halifax. Free admission.">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600&f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="page-v4.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a href="#" class="logo">
-        <span class="logo-dot" aria-hidden="true"></span>
-        <span>SENIOR FEST ’27</span>
-      </a>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="#top" class="wordmark" aria-label="Senior Fest home">SENIOR FEST</a>
 
-      <nav class="nav-links" aria-label="Main">
-        <a href="#lineup">Lineup</a>
-        <a href="#highlights">On Site</a>
+      <nav class="nav-links" aria-label="Page sections">
         <a href="#venue">Venue</a>
+        <a href="#schedule">Lineup</a>
+        <a href="#visit">Parking</a>
         <a href="flyer.html" target="_blank" rel="noopener">Poster</a>
       </nav>
 
-      <div class="nav-right">
-        <button type="button" class="size-btn" id="text-size-btn" aria-label="Adjust text size">Aa 100%</button>
-        <a href="#rsvp" class="btn btn-sm btn-red">RSVP FREE</a>
+      <div class="nav-controls">
+        <button type="button" class="btn btn--quiet btn--nav" id="scale-toggle">Text 100%</button>
+        <a href="#rsvp" class="btn btn--quiet btn--nav">RSVP</a>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
+  <main id="top">
     <section class="hero">
-      <div class="wrap">
-        <div class="kicker-badge">
-          <span>●</span> SAT MAY 8, 2027 &nbsp;·&nbsp; 11 AM – 7 PM &nbsp;·&nbsp; HALIFAX, NS
+      <div class="container hero-stage">
+        <div class="hero-copy">
+          <h1>Eight hours at Steele Wheels.</h1>
+          <p class="lead">Four live stage sets, four free prize bingos, and seventy-five classic cars.</p>
+          <div class="hero-actions">
+            <a href="#rsvp" class="btn">Save a free spot</a>
+            <a href="#schedule" class="btn btn--quiet">See the lineup</a>
+          </div>
         </div>
 
-        <h1>SENIOR <span class="accent">FEST.</span></h1>
-        <p class="hero-sub">
-          8 hours live inside Steele Wheels Motor Museum. 4 stage shows &amp; bands. 4 free prize bingos. 75+ classic cars.
-        </p>
+        <div class="hero-visual">
+          <figure class="hero-photo" data-slot="hero" data-alt="The main showroom floor and concert stage inside Steele Wheels Motor Museum in Halifax">
+            <img
+              src="images/steele-wheels-showroom.jpg"
+              width="828"
+              height="466"
+              alt="Classic convertibles, crystal chandeliers, and the main stage inside Steele Wheels Motor Museum"
+              fetchpriority="high"
+            >
+          </figure>
 
-        <div class="hero-actions">
-          <a href="#rsvp" class="btn btn-red">RSVP FREE</a>
-          <a href="#lineup" class="btn btn-ghost">VIEW SET TIMES</a>
-        </div>
-
-        <div class="stat-bar">
-          <div class="stat-item">
-            <span class="stat-label">Admission</span>
-            <span class="stat-val">100% Free Entry</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Free Prize Bingo</span>
-            <span class="stat-val">12 · 2 · 4 · 6 PM</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Venue</span>
-            <span class="stat-val">Steele Wheels (66 Otter Lake Ct)</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Parking &amp; Access</span>
-            <span class="stat-val">Free Lot · Wheelchair Accessible</span>
-          </div>
+          <dl class="bill-plate">
+            <div>
+              <dt>Date</dt>
+              <dd><time datetime="2027-05-08">May 8, 2027</time></dd>
+            </div>
+            <div>
+              <dt>Venue</dt>
+              <dd>66 Otter Lake Ct</dd>
+            </div>
+            <div>
+              <dt>Entry</dt>
+              <dd>Free doors, free bingo</dd>
+            </div>
+          </dl>
         </div>
       </div>
     </section>
 
-    <!-- Set Times / Lineup -->
-    <section id="lineup" class="section">
-      <div class="wrap">
-        <div class="section-top">
+    <section class="band-figures" aria-label="Festival format">
+      <div class="container">
+        <p class="statement-line">Odd hours bring live music and shows. Even hours call sixty-minute prize bingos.</p>
+
+        <div class="stats">
           <div>
-            <span class="eyebrow">Main Stage &amp; Showroom</span>
-            <h2>HOURLY LINEUP</h2>
+            <b>8&nbsp;hours</b>
+            <span>Morning swing through evening finale bingo</span>
           </div>
-
-          <div class="tabs" role="group" aria-label="Filter schedule">
-            <button type="button" class="tab-btn" data-filter="all" aria-pressed="true">All Sets</button>
-            <button type="button" class="tab-btn" data-filter="bingo" aria-pressed="false">Bingo (4)</button>
-            <button type="button" class="tab-btn" data-filter="shows" aria-pressed="false">Live Stage (4)</button>
-          </div>
-        </div>
-
-        <div class="lineup-list">
-          <div class="set-row" data-category="shows">
-            <div class="set-time">11:00 – 12:00 PM</div>
-            <span class="set-badge badge-stage">LIVE</span>
-            <div class="set-info">
-              <h3>Swing Dancing</h3>
-              <p>Live swing dancers, open dance floor &amp; dance hosts.</p>
-            </div>
-            <span class="set-loc">Main Stage</span>
-          </div>
-
-          <div class="set-row" data-category="bingo">
-            <div class="set-time">12:00 – 1:00 PM</div>
-            <span class="set-badge badge-bingo">BINGO 1</span>
-            <div class="set-info">
-              <h3>Free Prize Bingo — Round 1</h3>
-              <p>60 mins sharp · Jumbo slider cards, giant LED board &amp; gift card prizes.</p>
-            </div>
-            <span class="set-loc">Showroom</span>
-          </div>
-
-          <div class="set-row" data-category="shows">
-            <div class="set-time">1:00 – 2:00 PM</div>
-            <span class="set-badge badge-stage">LIVE</span>
-            <div class="set-info">
-              <h3>Live Band</h3>
-              <p>50s–70s classics, open dance floor &amp; classic car photo ops.</p>
-            </div>
-            <span class="set-loc">Main Stage</span>
-          </div>
-
-          <div class="set-row" data-category="bingo">
-            <div class="set-time">2:00 – 3:00 PM</div>
-            <span class="set-badge badge-bingo">BINGO 2</span>
-            <div class="set-info">
-              <h3>Free Prize Bingo — Round 2</h3>
-              <p>60 mins sharp · Four games for gift cards &amp; local prize baskets.</p>
-            </div>
-            <span class="set-loc">Showroom</span>
-          </div>
-
-          <div class="set-row" data-category="shows">
-            <div class="set-time">3:00 – 4:00 PM</div>
-            <span class="set-badge badge-stage">SHOW</span>
-            <div class="set-info">
-              <h3>Show on Stage</h3>
-              <p>Featured 60-minute afternoon live stage production.</p>
-            </div>
-            <span class="set-loc">Main Stage</span>
-          </div>
-
-          <div class="set-row" data-category="bingo">
-            <div class="set-time">4:00 – 5:00 PM</div>
-            <span class="set-badge badge-bingo">BINGO 3</span>
-            <div class="set-info">
-              <h3>Free Prize Bingo — Round 3</h3>
-              <p>60 mins sharp · Late-afternoon prize baskets &amp; gift cards.</p>
-            </div>
-            <span class="set-loc">Showroom</span>
-          </div>
-
-          <div class="set-row" data-category="shows">
-            <div class="set-time">5:00 – 6:00 PM</div>
-            <span class="set-badge badge-stage">VOCALS</span>
-            <div class="set-info">
-              <h3>Live Singing</h3>
-              <p>Classic vocal showcase &amp; early-evening dance floor.</p>
-            </div>
-            <span class="set-loc">Main Stage</span>
-          </div>
-
-          <div class="set-row" data-category="bingo">
-            <div class="set-time">6:00 – 7:00 PM</div>
-            <span class="set-badge badge-bingo">FINALE</span>
-            <div class="set-info">
-              <h3>Free Prize Bingo — Grand Finale</h3>
-              <p>60 mins sharp · Championship Basket &amp; final door-prize draw.</p>
-            </div>
-            <span class="set-loc">Showroom</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4 Tight Feature Blocks -->
-    <section id="highlights" class="section">
-      <div class="wrap">
-        <div class="section-top">
           <div>
-            <span class="eyebrow">All Day · 11 AM – 7 PM</span>
-            <h2>WHAT’S ON SITE</h2>
+            <b>4&nbsp;bingos</b>
+            <span>Jumbo slider cards and stage LED numbers</span>
           </div>
-        </div>
-
-        <div class="feature-grid">
-          <div class="feature-tile">
-            <span class="tile-kicker">01 · Showroom</span>
-            <h3>75+ Classic &amp; Exotic Cars</h3>
-            <p>Full access to Steele Wheels’ 40,000 sq. ft. collection of vintage cruisers, muscle cars, and motorcycles.</p>
-          </div>
-
-          <div class="feature-tile">
-            <span class="tile-kicker">02 · Main Stage</span>
-            <h3>4 Free Prize Bingo Hours</h3>
-            <p>No card fees. Easy-read slider cards, huge numbers on the stage LED wall, and prizes every game.</p>
-          </div>
-
-          <div class="feature-tile">
-            <span class="tile-kicker">03 · Food &amp; Drink</span>
-            <h3>Indoor Airstream Café</h3>
-            <p>Coffee, decaf, tea, snacks, lunch, and supper served right out of the polished vintage Airstream trailer.</p>
-          </div>
-
-          <div class="feature-tile">
-            <span class="tile-kicker">04 · Upper Mezzanine</span>
-            <h3>Wellness &amp; Community Expo</h3>
-            <p>30+ local senior, health, and recreation booths upstairs via elevator in a quiet conversation zone.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Venue & Access -->
-    <section id="venue" class="section">
-      <div class="wrap">
-        <div class="section-top">
           <div>
-            <span class="eyebrow">Steele Wheels Motor Museum</span>
-            <h2>GETTING THERE</h2>
-          </div>
-        </div>
-
-        <div class="venue-strip">
-          <div class="venue-box">
-            <h3>Address</h3>
-            <p>66 Otter Lake Court, Bayers Lake, Halifax (early doors 10:30 AM).</p>
-          </div>
-          <div class="venue-box">
-            <h3>Free Parking</h3>
-            <p>Free rear lot plus a flat front-door drop-off lane for cars &amp; buses.</p>
-          </div>
-          <div class="venue-box">
-            <h3>Accessibility</h3>
-            <p>Step-free floor, elevator to mezzanine, and loaner wheelchairs at the door.</p>
-          </div>
-          <div class="venue-box">
-            <h3>Shuttles &amp; Buses</h3>
-            <p>Access-A-Bus &amp; residence buses welcome. Check RSVP box for Lacewood shuttle updates.</p>
+            <b>75+&nbsp;cars</b>
+            <span>Forty thousand square feet of classics</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Fast Free RSVP -->
-    <section id="rsvp" class="section" style="border-bottom: none;">
-      <div class="wrap rsvp-grid">
-        <div class="rsvp-left">
-          <span class="eyebrow">Free Entry</span>
-          <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); margin: 0; letter-spacing: -0.03em;">RSVP FOR FREE</h2>
+    <section id="venue" class="section-venue">
+      <div class="container venue-split">
+        <div class="venue-copy">
+          <h2>Live bands downstairs, quiet booths upstairs.</h2>
           <p>
-            Walk-ins are welcome all day—no ticket required. Optional RSVP helps us set out seating and enters you into our bonus door-prize draw.
+            Walk the collection between sets, eat at the indoor Airstream diner, and visit thirty mezzanine booths via elevator.
           </p>
 
-          <div class="countdown-pill" aria-live="polite">
-            <span class="cd-label">Countdown</span>
-            <div class="cd-nums" id="countdown-display">
-              <span>--<small>D</small></span>
-              <span>--<small>H</small></span>
-              <span>--<small>M</small></span>
+          <dl class="venue-facts">
+            <div>
+              <dt>Main stage</dt>
+              <dd>Swing, retro band, stage show, and vocals</dd>
             </div>
+            <div>
+              <dt>Airstream diner</dt>
+              <dd>Coffee, snacks, lunch, and early supper</dd>
+            </div>
+            <div>
+              <dt>Mezzanine expo</dt>
+              <dd>Senior wellness booths via elevator</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="venue-gallery">
+          <figure class="venue-figure">
+            <div class="photo-slot photo-slot--tall" data-slot="stage" data-alt="A live band performing on the Steele Wheels Motor Museum stage in Halifax">
+              <img
+                src="images/steele-wheels-stage-band.jpg"
+                width="828"
+                height="466"
+                alt="Musicians performing live on the main stage inside Steele Wheels Motor Museum"
+                loading="lazy"
+              >
+            </div>
+            <figcaption class="caption">Live sets on the showroom stage.</figcaption>
+          </figure>
+
+          <figure class="venue-figure">
+            <div class="photo-slot" data-slot="airstream" data-alt="The polished silver Airstream diner inside Steele Wheels Motor Museum">
+              <img
+                src="images/steele-wheels-airstream.jpg"
+                width="828"
+                height="466"
+                alt="Polished silver Airstream trailer café with red and white diner tables inside Steele Wheels"
+                loading="lazy"
+              >
+            </div>
+            <figcaption class="caption">Indoor Airstream diner seating.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule" class="section-schedule">
+      <div class="container">
+        <div class="schedule-head">
+          <div class="schedule-head-copy">
+            <h2>Every hour on the clock.</h2>
+            <p class="lead">Early doors and coffee open at 10:30 am.</p>
+          </div>
+
+          <fieldset class="seg">
+            <legend class="visually-hidden">Filter schedule</legend>
+            <input type="radio" name="bill-filter" id="bf-all" value="all" checked>
+            <label for="bf-all">All sets</label>
+            <input type="radio" name="bill-filter" id="bf-bingo" value="bingo">
+            <label for="bf-bingo">Bingo (4)</label>
+            <input type="radio" name="bill-filter" id="bf-stage" value="stage">
+            <label for="bf-stage">Live stage (4)</label>
+          </fieldset>
+        </div>
+
+        <table class="bill-table">
+          <thead>
+            <tr>
+              <th scope="col">Hour</th>
+              <th scope="col">Set</th>
+              <th scope="col">On the floor</th>
+            </tr>
+          </thead>
+          <tbody id="bill-rows">
+            <tr data-kind="stage">
+              <td class="bill-time">11:00 am</td>
+              <td class="bill-act">Swing dancing</td>
+              <td class="bill-note">Swing dancers and open floor</td>
+            </tr>
+            <tr data-kind="bingo">
+              <td class="bill-time">12:00 pm</td>
+              <td class="bill-act">Free bingo, round 1</td>
+              <td class="bill-note">Gift cards and prize baskets</td>
+            </tr>
+            <tr data-kind="stage">
+              <td class="bill-time">1:00 pm</td>
+              <td class="bill-act">Live band</td>
+              <td class="bill-note">50s to 70s hits and car portraits</td>
+            </tr>
+            <tr data-kind="bingo">
+              <td class="bill-time">2:00 pm</td>
+              <td class="bill-act">Free bingo, round 2</td>
+              <td class="bill-note">Afternoon games and door prizes</td>
+            </tr>
+            <tr data-kind="stage">
+              <td class="bill-time">3:00 pm</td>
+              <td class="bill-act">Show on stage</td>
+              <td class="bill-note">Seated stage production</td>
+            </tr>
+            <tr data-kind="bingo">
+              <td class="bill-time">4:00 pm</td>
+              <td class="bill-act">Free bingo, round 3</td>
+              <td class="bill-note">Prize games and supper service</td>
+            </tr>
+            <tr data-kind="stage">
+              <td class="bill-time">5:00 pm</td>
+              <td class="bill-act">Live singing</td>
+              <td class="bill-note">Classic vocals and slow dancing</td>
+            </tr>
+            <tr data-kind="bingo">
+              <td class="bill-time">6:00 pm</td>
+              <td class="bill-act">Free bingo, finale</td>
+              <td class="bill-note">Grand gift basket close</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="visit" class="section-visit">
+      <div class="container visit-layout">
+        <div class="visit-intro">
+          <h2>Getting to Bayers Lake.</h2>
+          <p>66 Otter Lake Court, Halifax.</p>
+        </div>
+
+        <div class="visit-rows">
+          <div class="visit-row">
+            <h3>Parking and drop-off</h3>
+            <p>Free rear lot plus a flat front-door drop-off lane.</p>
+          </div>
+          <div class="visit-row">
+            <h3>Step-free access</h3>
+            <p>Flat showroom, mezzanine elevator, and loaner wheelchairs.</p>
+          </div>
+          <div class="visit-row">
+            <h3>Shuttles and buses</h3>
+            <p>Access-A-Bus and residence buses welcome at the front doors.</p>
+          </div>
+          <div class="visit-row">
+            <h3>Daylight drive home</h3>
+            <p>May sunset is past 8:20 pm, well after our 7:00 pm finish.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp" class="band-rsvp">
+      <div class="container rsvp-split">
+        <div class="rsvp-intro">
+          <h2>Optional free RSVP.</h2>
+          <p>
+            Walk-ins need no ticket. Leaving your name enters our extra welcome-desk draw.
+          </p>
+          <div>
+            <a href="flyer.html" target="_blank" rel="noopener" class="btn btn--quiet">Print poster</a>
+          </div>
+        </div>
+
+        <form class="rsvp-form" data-endpoint="" novalidate>
+          <div class="field">
+            <label for="guest-name">Name or residence group</label>
+            <input id="guest-name" name="name" type="text" autocomplete="name" required placeholder="Margaret MacDonald">
+          </div>
+
+          <div class="field-pair">
+            <div class="field">
+              <label for="guest-phone">Phone</label>
+              <input id="guest-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="902-555-0148">
+            </div>
+            <div class="field">
+              <label for="guest-email">Email</label>
+              <input id="guest-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@example.ca">
+            </div>
+          </div>
+
+          <div class="field-pair">
+            <div class="field">
+              <label for="guest-count">Guests</label>
+              <select id="guest-count" name="guests">
+                <option value="1">1 guest</option>
+                <option value="2" selected>2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+                <option value="5-9">5 to 9 guests</option>
+                <option value="10+">Bus group (10+)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="guest-wave">Timing</label>
+              <select id="guest-wave" name="wave">
+                <option value="daytime">Daytime sets</option>
+                <option value="afternoon">Afternoon and finale</option>
+                <option value="flexible" selected>Flexible</option>
+              </select>
+            </div>
+          </div>
+
+          <fieldset class="check-fieldset">
+            <legend>Notes</legend>
+            <label class="check-line">
+              <input type="checkbox" name="shuttle" value="yes">
+              <span>Lacewood shuttle updates</span>
+            </label>
+            <label class="check-line">
+              <input type="checkbox" name="bus" value="yes">
+              <span>Bringing a group bus</span>
+            </label>
+            <label class="check-line">
+              <input type="checkbox" name="wheelchair" value="yes">
+              <span>Loaner wheelchair info</span>
+            </label>
+          </fieldset>
+
+          <div class="field">
+            <label for="guest-song">Song request</label>
+            <input id="guest-song" name="song" type="text" placeholder="Song or artist">
           </div>
 
           <div>
-            <a href="flyer.html" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Print 8.5×11" Event Poster →</a>
+            <button type="submit" class="btn btn--quiet">Record RSVP</button>
+            <p class="form-status" id="rsvp-status" aria-live="polite"></p>
           </div>
-        </div>
-
-        <div class="form-card">
-          <div id="form-error" class="error-banner" hidden role="alert"></div>
-
-          <form id="rsvp-form" novalidate>
-            <div class="row">
-              <label for="guest-name">Name (or Group / Residence)</label>
-              <input type="text" id="guest-name" name="name" required autocomplete="name" placeholder="Full name" />
-            </div>
-
-            <div class="row row-2">
-              <div>
-                <label for="guest-phone">Phone</label>
-                <input type="tel" id="guest-phone" name="phone" autocomplete="tel" placeholder="902-555-0148" />
-              </div>
-              <div>
-                <label for="guest-email">Email</label>
-                <input type="email" id="guest-email" name="email" autocomplete="email" placeholder="you@example.ca" />
-              </div>
-            </div>
-
-            <div class="row row-2">
-              <div>
-                <label for="guest-count">Guests</label>
-                <select id="guest-count" name="guests">
-                  <option value="1">1 guest</option>
-                  <option value="2" selected>2 guests</option>
-                  <option value="3">3 guests</option>
-                  <option value="4">4 guests</option>
-                  <option value="5-9">5–9 guests</option>
-                  <option value="10+ Bus/Group">Bus / Group (10+)</option>
-                </select>
-              </div>
-              <div>
-                <label for="arrival-window">Arrival Wave</label>
-                <select id="arrival-window" name="window">
-                  <option value="11 AM - 3 PM">11 AM – 3 PM</option>
-                  <option value="3 PM - 7 PM">3 PM – 7 PM</option>
-                  <option value="All Day" selected>Flexible / All Day</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="row">
-              <label>Options</label>
-              <div class="checks">
-                <label class="check-item">
-                  <input type="checkbox" name="shuttleInterest" value="Yes" />
-                  <span>Interested in Lacewood Terminal shuttle</span>
-                </label>
-                <label class="check-item">
-                  <input type="checkbox" name="groupBus" value="Yes" />
-                  <span>Bringing a retirement / community bus</span>
-                </label>
-                <label class="check-item">
-                  <input type="checkbox" name="loanerWheelchair" value="Yes" />
-                  <span>Need on-site loaner wheelchair info</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="row">
-              <label for="prom-song">Song Request (Optional)</label>
-              <input type="text" id="prom-song" name="songRequest" placeholder="Song title or artist" />
-            </div>
-
-            <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 0.4rem;">
-              SUBMIT FREE RSVP
-            </button>
-          </form>
-
-          <div id="rsvp-confirmation" hidden aria-live="polite">
-            <h3 style="font-family: var(--font-display); font-size: 1.6rem; margin: 0 0 0.4rem;">YOU’RE IN.</h3>
-            <p style="color: var(--text-muted); margin: 0 0 0.5rem;">
-              Registered under <strong id="conf-name" style="color: var(--text);"></strong>. Give your name at the door for your bonus prize ballot.
-            </p>
-            <span class="pass-code" id="conf-code">SF27-0000</span>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0 0 1.2rem;">
-              Sat, May 8, 2027 · 11 AM – 7 PM · 66 Otter Lake Ct, Halifax
-            </p>
-            <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
-              <button type="button" class="btn btn-ghost btn-sm" id="print-pass-btn">Print</button>
-              <button type="button" class="btn btn-red btn-sm" id="reset-rsvp-btn">Add Another</button>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="wrap footer-inner">
-      <span>SENIOR FEST 2027 · May 8, 11 AM – 7 PM · Steele Wheels Motor Museum, Halifax</span>
-      <div class="footer-links">
-        <a href="flyer.html" target="_blank" rel="noopener">Poster</a>
-        <a href="bingo-caller.html" target="_blank" rel="noopener">Stage Bingo Board</a>
-        <button type="button" class="text-btn" id="open-organizer-modal">
-          RSVPs (<span id="rsvp-count-badge">0</span>)
-        </button>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-mast" aria-hidden="true">SENIOR FEST</div>
+      <div class="footer-bottom">
+        <span>May 8, 2027 at Steele Wheels Motor Museum, Halifax</span>
+        <div class="footer-links">
+          <a href="#schedule">Lineup</a>
+          <a href="#visit">Parking</a>
+          <a href="flyer.html" target="_blank" rel="noopener">Poster</a>
+          <a href="bingo-caller.html" target="_blank" rel="noopener">Bingo board</a>
+        </div>
+        <p class="credits-line" data-credits>Photographs: Steele Wheels Motor Museum, Halifax.</p>
       </div>
     </div>
   </footer>
 
-  <div class="modal-backdrop" id="organizer-modal" hidden role="dialog" aria-modal="true" aria-labelledby="org-modal-title">
-    <div class="modal-panel">
-      <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
-        <h3 id="org-modal-title" style="margin: 0; font-family: var(--font-display);">Saved RSVPs</h3>
-        <button type="button" class="btn btn-ghost btn-sm" id="close-organizer-modal">Close</button>
-      </div>
-      <div id="organizer-table-container"></div>
-      <div style="margin-top: 1rem;">
-        <button type="button" class="btn btn-red btn-sm" id="export-csv-btn">Export CSV</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="app-v3.js"></script>
+  <script>
+    window.hallmarkSlots = (m) => {
+      for (const [k, v] of Object.entries(m)) {
+        const s = document.querySelector(`[data-slot="${k}"]`);
+        if (!s) continue;
+        const im = new Image();
+        im.src = typeof v === "string" ? v : v.src;
+        im.alt = (typeof v === "object" && v.alt) || s.dataset.alt || "";
+        s.querySelectorAll(":scope > img").forEach((o) => o.remove());
+        s.prepend(im);
+      }
+    };
+    document.querySelectorAll("[data-slot] img").forEach((i) => {
+      if (i.complete && !i.naturalWidth) i.remove();
+      else i.addEventListener("error", () => i.remove(), { once: true });
+    });
+  </script>
+  <script src="app-v4.js"></script>
 </body>
 </html>
