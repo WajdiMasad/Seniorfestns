@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Printable Poster — Senior Fest 2027 (May 8 at Steele Wheels)</title>
+  <title>SENIOR FEST 2027 — Printable Poster</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #111214;
-      --muted: #52565e;
-      --accent: #c8281e;
-      --bg: #f6f5f1;
+      --black: #09090b;
+      --muted: #52525b;
+      --red: #e11d48;
+      --border: #e4e4e7;
     }
 
     * {
@@ -22,9 +22,9 @@
     body {
       margin: 0;
       padding: 1.5rem;
-      background: #e5e5e0;
+      background: #18181b;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--ink);
+      color: var(--black);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -34,21 +34,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--ink);
-      color: #ffffff;
+      background: #09090b;
+      border: 1px solid #27272a;
+      color: #fafafa;
       padding: 0.75rem 1.25rem;
-      border-radius: 12px;
+      border-radius: 10px;
       font-size: 0.88rem;
     }
 
     .print-btn {
-      background: var(--accent);
+      background: var(--red);
       color: #ffffff;
       border: none;
       padding: 0.55rem 1.15rem;
-      border-radius: 999px;
-      font: inherit;
-      font-weight: 600;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
       cursor: pointer;
     }
 
@@ -57,153 +58,152 @@
       min-height: 10.6in;
       margin: 0 auto;
       background: #ffffff;
-      padding: 0.5in 0.55in;
+      padding: 0.48in 0.52in;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
     }
 
-    .meta-top {
+    .top-strip {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1.5px solid var(--ink);
+      align-items: center;
+      border-bottom: 3px solid var(--black);
       padding-bottom: 0.14in;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9.5pt;
+      font-size: 10pt;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
 
-    .free-tag {
-      color: var(--accent);
-      font-weight: 600;
+    .badge-red {
+      background: var(--red);
+      color: #ffffff;
+      padding: 0.06in 0.16in;
+      border-radius: 5px;
     }
 
-    .hero-block {
-      padding: 0.24in 0 0.2in;
-      border-bottom: 1px solid rgba(17, 18, 20, 0.15);
+    .title-area {
+      padding: 0.22in 0 0.18in;
     }
 
     h1 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 400;
-      font-size: 56pt;
-      line-height: 0.94;
-      letter-spacing: -0.02em;
-      margin: 0 0 0.12in;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .lead {
-      font-size: 13pt;
-      line-height: 1.45;
-      color: var(--muted);
-      margin: 0;
-      max-width: 62ch;
-    }
-
-    .date-strip {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.25in;
-      padding: 0.18in 0;
-      border-bottom: 1.5px solid var(--ink);
-    }
-
-    .date-strip small {
-      display: block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 8.5pt;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 62pt;
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin-bottom: 0.03in;
-    }
-
-    .date-strip strong {
-      font-size: 14pt;
-      font-weight: 600;
-      letter-spacing: -0.015em;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 0.32in;
-      padding: 0.22in 0;
-    }
-
-    .col-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 8.5pt;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--accent);
       margin: 0 0 0.1in;
     }
 
-    .lineup-table {
+    h1 span {
+      color: var(--red);
+    }
+
+    .tagline {
+      font-size: 13.5pt;
+      font-weight: 600;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .event-bar {
+      background: var(--black);
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 0.18in 0.24in;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.22in;
+    }
+
+    .event-bar strong {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17pt;
+      display: block;
+    }
+
+    .event-bar span {
+      font-size: 10.5pt;
+      color: #d4d4d8;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 0.28in;
+    }
+
+    .sec-label {
+      font-size: 9pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--red);
+      margin: 0 0 0.08in;
+    }
+
+    .schedule-tbl {
       width: 100%;
       border-collapse: collapse;
       font-size: 10.5pt;
     }
 
-    .lineup-table td {
+    .schedule-tbl td {
       padding: 0.065in 0;
-      border-bottom: 1px solid rgba(17, 18, 20, 0.12);
+      border-bottom: 1px solid var(--border);
     }
 
-    .lineup-table td:first-child {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9.5pt;
-      width: 1.35in;
-      color: var(--muted);
+    .schedule-tbl td:first-child {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      width: 1.3in;
     }
 
-    .lineup-table tr.bingo-row td:last-child {
-      font-weight: 600;
-      color: var(--ink);
+    .bingo-hl td:last-child {
+      font-weight: 700;
+      color: var(--red);
     }
 
-    .feature-stack {
+    .specs {
       display: grid;
-      gap: 0.14in;
+      gap: 0.12in;
     }
 
-    .feat-item h3 {
+    .spec-card {
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0.11in 0.14in;
+    }
+
+    .spec-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 11.5pt;
-      font-weight: 600;
       margin: 0 0 0.03in;
     }
 
-    .feat-item p {
+    .spec-card p {
       margin: 0;
-      font-size: 10pt;
-      line-height: 1.42;
+      font-size: 9.8pt;
       color: var(--muted);
+      line-height: 1.38;
     }
 
-    .bottom-bar {
-      background: var(--bg);
-      padding: 0.16in 0.2in;
-      border-radius: 8px;
+    .bottom-cta {
+      border-top: 3px solid var(--black);
+      padding-top: 0.14in;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 10.5pt;
+      font-size: 11pt;
     }
 
-    .url-display {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5pt;
-      font-weight: 500;
-      color: var(--ink);
+    .url {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 13pt;
     }
 
     @page {
@@ -222,85 +222,79 @@
       .sheet {
         width: 100%;
         min-height: auto;
-        box-shadow: none;
       }
     }
   </style>
 </head>
 <body>
   <div class="toolbar">
-    <span><strong>8.5" × 11" Poster</strong> — Click any text on the page to customize before printing.</span>
+    <span><strong>Printable 8.5×11" Event Poster</strong> — Click any text to edit before printing.</span>
     <button type="button" class="print-btn" onclick="window.print()">Print Poster (Ctrl+P)</button>
   </div>
 
-  <div class="sheet" contenteditable="true" spellcheck="false" aria-label="Editable printable poster">
+  <div class="sheet" contenteditable="true" spellcheck="false">
     <div>
-      <div class="meta-top">
-        <span>Senior Fest 2027 · Halifax, Nova Scotia</span>
-        <span class="free-tag">Free Admission · Free Bingo · Free Parking</span>
+      <div class="top-strip">
+        <span>Steele Wheels Motor Museum · Halifax</span>
+        <span class="badge-red">100% Free Admission &amp; Free Bingo</span>
       </div>
 
-      <div class="hero-block">
-        <h1>Classic cars, live music &amp; <em>free bingo.</em></h1>
-        <p class="lead">
-          A free Saturday gathering for older adults, families, and friends surrounded by 75+ vintage cars inside Steele Wheels Motor Museum. Drop in for a couple of hours or spend the day.
-        </p>
+      <div class="title-area">
+        <h1>SENIOR <span>FEST.</span></h1>
+        <p class="tagline">8 Hours Live · 4 Bands &amp; Stage Shows · 4 Free Prize Bingos · 75+ Classic Cars</p>
       </div>
 
-      <div class="date-strip">
+      <div class="event-bar">
         <div>
-          <small>Date &amp; Hours</small>
-          <strong>Saturday, May 8, 2027 · 11 AM – 7 PM</strong>
+          <strong>SATURDAY, MAY 8, 2027 · 11 AM – 7 PM</strong>
+          <span>66 Otter Lake Court, Bayers Lake, Halifax (Early doors 10:30 AM)</span>
         </div>
-        <div>
-          <small>Venue</small>
-          <strong>Steele Wheels · 66 Otter Lake Ct, Bayers Lake</strong>
+        <div style="text-align: right;">
+          <strong style="color: #fb7185;">FREE ENTRY</strong>
+          <span>Free On-Site Parking</span>
         </div>
       </div>
 
-      <div class="two-col">
+      <div class="grid-2">
         <div>
-          <p class="col-title">Hourly Main Stage Lineup</p>
-          <table class="lineup-table">
-            <tr><td>10:30 AM</td><td>Early doors, coffee &amp; booths open</td></tr>
+          <p class="sec-label">Hourly Set Times</p>
+          <table class="schedule-tbl">
             <tr><td>11:00 – 12:00</td><td>Swing Dancing</td></tr>
-            <tr class="bingo-row"><td>12:00 – 1:00</td><td>Free Prize Bingo — Round 1</td></tr>
-            <tr><td>1:00 – 2:00</td><td>Live Band &amp; Afternoon Dance</td></tr>
-            <tr class="bingo-row"><td>2:00 – 3:00</td><td>Free Prize Bingo — Round 2</td></tr>
-            <tr><td>3:00 – 4:00</td><td>Featured Show on Stage</td></tr>
-            <tr class="bingo-row"><td>4:00 – 5:00</td><td>Free Prize Bingo — Round 3</td></tr>
+            <tr class="bingo-hl"><td>12:00 – 1:00</td><td>FREE PRIZE BINGO — Round 1</td></tr>
+            <tr><td>1:00 – 2:00</td><td>Live Band (50s–70s Classics)</td></tr>
+            <tr class="bingo-hl"><td>2:00 – 3:00</td><td>FREE PRIZE BINGO — Round 2</td></tr>
+            <tr><td>3:00 – 4:00</td><td>Show on Stage</td></tr>
+            <tr class="bingo-hl"><td>4:00 – 5:00</td><td>FREE PRIZE BINGO — Round 3</td></tr>
             <tr><td>5:00 – 6:00</td><td>Live Singing Showcase</td></tr>
-            <tr class="bingo-row"><td>6:00 – 7:00</td><td>Free Prize Bingo — Finale Round</td></tr>
+            <tr class="bingo-hl"><td>6:00 – 7:00</td><td>FREE PRIZE BINGO — Grand Finale</td></tr>
           </table>
         </div>
 
-        <div class="feature-stack">
-          <p class="col-title" style="margin-bottom: 0.02in;">Inside the Museum</p>
-          <div class="feat-item">
-            <h3>Four Hours of Free Prize Bingo</h3>
-            <p>Easy-read slider cards, numbers projected huge on the stage LED wall, and gift cards &amp; baskets every hour.</p>
+        <div class="specs">
+          <p class="sec-label" style="margin-bottom: 0;">On Site All Day</p>
+          <div class="spec-card">
+            <h3>4 Free Prize Bingo Hours</h3>
+            <p>Easy-read slider cards, huge numbers on the stage LED wall &amp; prizes every game.</p>
           </div>
-          <div class="feat-item">
+          <div class="spec-card">
             <h3>75+ Classic Cars &amp; Airstream Café</h3>
-            <p>Browse iconic 1950s–1970s cruisers and grab coffee, tea, lunch, or supper from the vintage silver Airstream.</p>
+            <p>Explore the 40,000 sq. ft. showroom plus coffee, lunch &amp; supper from the indoor Airstream.</p>
           </div>
-          <div class="feat-item">
-            <h3>Mezzanine Community &amp; Wellness Expo</h3>
-            <p>30+ local health, recreation, and community tables upstairs via elevator in a quiet conversation zone.</p>
+          <div class="spec-card">
+            <h3>Wellness &amp; Community Expo</h3>
+            <p>30+ local senior &amp; health booths upstairs via elevator.</p>
           </div>
-          <div class="feat-item">
+          <div class="spec-card">
             <h3>100% Wheelchair Accessible</h3>
-            <p>Step-free entry, elevator access, loaner wheelchairs, and a flat front-door drop-off lane for cars &amp; buses.</p>
+            <p>Step-free floor, elevator, loaner wheelchairs &amp; flat front-door bus drop-off.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="bottom-bar">
-      <div>
-        <strong>Walk-ins welcome all day.</strong> Optional free RSVP &amp; song requests:
-      </div>
-      <div class="url-display">wajdimasad.github.io/Seniorfestns</div>
+    <div class="bottom-cta">
+      <span><strong>Walk-ins welcome all day.</strong> Optional free RSVP:</span>
+      <span class="url">wajdimasad.github.io/Seniorfestns</span>
     </div>
   </div>
 </body>

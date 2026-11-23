@@ -1,7 +1,3 @@
-/**
- * Senior Fest 2027 — Website & Optional RSVP Script
- * Optional: Paste a Formspree, Make, or Google Apps Script URL below to forward RSVPs externally.
- */
 const RSVP_WEBHOOK_URL = "";
 const STORAGE_KEY = "senior_fest_2027_rsvps";
 const PREFS_KEY = "senior_fest_2027_scale";
@@ -9,19 +5,18 @@ const PREFS_KEY = "senior_fest_2027_scale";
 document.addEventListener("DOMContentLoaded", () => {
   initTextSizeCycle();
   initCountdown();
-  initScheduleFilters();
+  initTabs();
   initRsvpForm();
   initOrganizerModal();
 });
 
-/* 1. Clean Single-Button Text Size Cycle (100% -> 115% -> 128%) */
 function initTextSizeCycle() {
   const html = document.documentElement;
   const btn = document.getElementById("text-size-btn");
   const steps = [
     { key: "standard", label: "Aa 100%" },
     { key: "large", label: "Aa 115%" },
-    { key: "xlarge", label: "Aa 128%" }
+    { key: "xlarge", label: "Aa 130%" }
   ];
 
   let idx = 0;
@@ -49,7 +44,6 @@ function initTextSizeCycle() {
   }
 }
 
-/* 2. Countdown to May 8, 2027 11:00 AM ADT (Halifax) */
 function initCountdown() {
   const display = document.getElementById("countdown-display");
   if (!display) return;
@@ -59,7 +53,7 @@ function initCountdown() {
   function update() {
     const diff = eventDate - Date.now();
     if (diff <= 0) {
-      display.innerHTML = "<span>Happening today · 11 AM – 7 PM</span>";
+      display.innerHTML = "<span>LIVE TODAY · 11 AM – 7 PM</span>";
       return;
     }
 
@@ -68,9 +62,9 @@ function initCountdown() {
     const mins = Math.floor((diff / (1000 * 60)) % 60);
 
     display.innerHTML = `
-      <span>${days}<small>d</small></span>
-      <span>${hours}<small>h</small></span>
-      <span>${mins}<small>m</small></span>
+      <span>${days}<small>D</small></span>
+      <span>${hours}<small>H</small></span>
+      <span>${mins}<small>M</small></span>
     `;
   }
 
@@ -78,16 +72,14 @@ function initCountdown() {
   setInterval(update, 60000);
 }
 
-/* 3. Timetable Filter */
-function initScheduleFilters() {
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const rows = document.querySelectorAll(".tt-row");
+function initTabs() {
+  const btns = document.querySelectorAll(".tab-btn");
+  const rows = document.querySelectorAll(".set-row");
 
-  filterBtns.forEach((btn) => {
+  btns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const filter = btn.dataset.filter;
-      filterBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-
+      btns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
       rows.forEach((row) => {
         row.hidden = !(filter === "all" || row.dataset.category === filter);
       });
@@ -95,7 +87,6 @@ function initScheduleFilters() {
   });
 }
 
-/* 4. Optional Free RSVP Handling */
 function getStoredRsvps() {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
@@ -140,13 +131,15 @@ function initRsvpForm() {
     const email = (formData.get("email") || "").toString().trim();
 
     if (!name) {
-      showError("Please enter your name (or your group’s name).");
+      errorBox.textContent = "Enter your name or group name.";
+      errorBox.hidden = false;
       document.getElementById("guest-name").focus();
       return;
     }
 
     if (!phone && !email) {
-      showError("Please include either a phone number or an email address.");
+      errorBox.textContent = "Enter a phone number or email address.";
+      errorBox.hidden = false;
       document.getElementById("guest-phone").focus();
       return;
     }
@@ -159,7 +152,7 @@ function initRsvpForm() {
       phone,
       email,
       guests: formData.get("guests") || "1",
-      window: formData.get("window") || "Flexible / Full Day",
+      window: formData.get("window") || "All Day",
       shuttleInterest: formData.get("shuttleInterest") ? "Yes" : "No",
       loanerWheelchair: formData.get("loanerWheelchair") ? "Yes" : "No",
       groupBus: formData.get("groupBus") ? "Yes" : "No",
@@ -194,14 +187,8 @@ function initRsvpForm() {
       document.getElementById("guest-name").focus();
     });
   }
-
-  function showError(msg) {
-    errorBox.textContent = msg;
-    errorBox.hidden = false;
-  }
 }
 
-/* 5. Organizer RSVP Check-In & CSV Export Modal */
 function initOrganizerModal() {
   const modal = document.getElementById("organizer-modal");
   const openBtn = document.getElementById("open-organizer-modal");
@@ -228,41 +215,15 @@ function initOrganizerModal() {
     const rsvps = getStoredRsvps();
     if (!rsvps.length) return;
 
-    const headers = [
-      "Code",
-      "SubmittedAt",
-      "Name",
-      "Phone",
-      "Email",
-      "Guests",
-      "ArrivalWindow",
-      "ShuttleInterest",
-      "LoanerWheelchair",
-      "GroupBus",
-      "SongRequest"
-    ];
-
-    const escapeCsv = (val) => `"${String(val ?? "").replace(/"/g, '""')}"`;
+    const headers = ["Code", "SubmittedAt", "Name", "Phone", "Email", "Guests", "Window", "Shuttle", "Wheelchair", "Bus", "Song"];
+    const esc = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
     const rows = rsvps.map((r) =>
-      [
-        r.code,
-        r.submittedAt,
-        r.name,
-        r.phone,
-        r.email,
-        r.guests,
-        r.window,
-        r.shuttleInterest,
-        r.loanerWheelchair,
-        r.groupBus,
-        r.songRequest
-      ]
-        .map(escapeCsv)
+      [r.code, r.submittedAt, r.name, r.phone, r.email, r.guests, r.window, r.shuttleInterest, r.loanerWheelchair, r.groupBus, r.songRequest]
+        .map(esc)
         .join(",")
     );
 
-    const csv = [headers.join(","), ...rows].join("\r\n");
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const blob = new Blob([[headers.join(","), ...rows].join("\r\n")], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -274,44 +235,21 @@ function initOrganizerModal() {
   function renderTable() {
     const rsvps = getStoredRsvps();
     if (!rsvps.length) {
-      tableContainer.innerHTML = "<p><em>No RSVPs saved on this browser yet.</em></p>";
+      tableContainer.innerHTML = "<p>No RSVPs saved on this device yet.</p>";
       return;
     }
 
-    const rowsHtml = rsvps
-      .map(
-        (r) => `
-        <tr>
-          <td><strong>${escapeHtml(r.code)}</strong></td>
-          <td>${escapeHtml(r.name)}</td>
-          <td>${escapeHtml(r.phone || r.email)}</td>
-          <td>${escapeHtml(r.guests)}</td>
-          <td>${escapeHtml(r.window)}</td>
-          <td>${escapeHtml(r.songRequest || "—")}</td>
-        </tr>`
-      )
-      .join("");
+    const esc = (s) => {
+      const d = document.createElement("div");
+      d.textContent = String(s ?? "");
+      return d.innerHTML;
+    };
 
     tableContainer.innerHTML = `
       <table class="rsvp-table">
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Contact</th>
-            <th>Guests</th>
-            <th>Timing</th>
-            <th>Song</th>
-          </tr>
-        </thead>
-        <tbody>${rowsHtml}</tbody>
+        <thead><tr><th>Code</th><th>Name</th><th>Contact</th><th>Guests</th><th>Wave</th></tr></thead>
+        <tbody>${rsvps.map((r) => `<tr><td>${esc(r.code)}</td><td>${esc(r.name)}</td><td>${esc(r.phone || r.email)}</td><td>${esc(r.guests)}</td><td>${esc(r.window)}</td></tr>`).join("")}</tbody>
       </table>
     `;
-  }
-
-  function escapeHtml(str) {
-    const div = document.createElement("div");
-    div.textContent = String(str ?? "");
-    return div.innerHTML;
   }
 }
